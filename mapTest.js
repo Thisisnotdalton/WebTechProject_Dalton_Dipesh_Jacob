@@ -37,22 +37,12 @@
                                         }
                                     }
                                 }
+
+                                console.log(locationIds);
+                                console.log(photoData+"\nLength:"+photoData.length);
                             }
                         });
                     }
-                    console.log(photoData);
-                    //console.log(locationIds);
-                    console.log(photoData[1]);
-                    /*for (var i in photoData) {
-                        var marker = new google.maps.Marker({
-                            position: {
-                                lat: photoData[i].location.latitude,
-                                lng: photoData[i].location.longitude
-                            },
-                            map: map,
-                            icon: photoData[i].images.thumbnail.url
-                        });
-                    }*/
                 }
             });
         },
