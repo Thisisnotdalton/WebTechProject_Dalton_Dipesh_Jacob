@@ -43,7 +43,10 @@
                                             lng: photoData[i].location.longitude
                                         },
                                         map: map,
-                                        icon: photoData[i].images.thumbnail
+                                        icon: {
+                                            scaledSize: new google.maps.Size(50, 50),
+                                            url: photoData[i].images.thumbnail.url
+                                        }
                                     });
                                 }
                             }
