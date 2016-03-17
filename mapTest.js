@@ -22,14 +22,12 @@
                         locationIds.push(data.data[obj]);
                     }
                     for (var loc in locationIds) {
-                        //console.log("Checking location id:"+locationIds[loc].id+"\tname:"+locationIds[loc].name);
                         $.ajax({
                             type: "GET",
                             dataType: "jsonp",
                             cache: false,
                             url: "https://api.instagram.com/v1/locations/"+locationIds[loc].id+"/media/recent?access_token="+access_token,
                             success: function (data) {
-                                //console.log(data);
                                 for (var obj in data) {
                                     if (Array.isArray(data[obj])) {
                                         for (var k in data[obj]) {
@@ -38,8 +36,16 @@
                                     }
                                 }
 
-                                console.log(locationIds);
-                                console.log(photoData+"\nLength:"+photoData.length);
+                                for (var i in photoData) {
+                                    var marker = new google.maps.Marker({
+                                        position: {
+                                            lat: photoData[i].location.latitude,
+                                            lng: photoData[i].location.longitude
+                                        },
+                                        map: map,
+                                        icon: photoData[i].images.thumbnail
+                                    });
+                                }
                             }
                         });
                     }
