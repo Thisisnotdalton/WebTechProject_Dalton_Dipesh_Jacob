@@ -3,6 +3,7 @@
     var map,
         markers = [],
         MAX_MARKERS = 200,
+        timeOutFun = null,
         zoomRatios = {
             20: 1128.497220,
             19 : 2256.994440,
@@ -27,13 +28,20 @@
         },
         initMap = function () {
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: -34.397, lng: 150.644},
+                center: {lat: 35.5800, lng: 82.5558},
                 zoom: 18
             });
 
             google.maps.event.addListener(map,"center_changed", function(){
                     var pos = map.getCenter();
-                    Instagram(pos.lat(), pos.lng(),map.getZoom());
+                    //make sure we don't call too many times
+                    if(timeOutFun != null){
+                        console.log("Canceling previous call until map settles.");
+                        clearTimeout(timeOutFun);
+                    }
+                    timeOutFun = setTimeout(function(){
+                        Instagram(pos.lat(), pos.lng(),map.getZoom());
+                    },1000);
             });
         },
         Instagram = function (lat, lng, zoom) {
