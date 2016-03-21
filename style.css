@@ -2,7 +2,10 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: black;
+    background-image:url("El%20Capitan%202.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+
 }
 h1{
     text-align: center;
@@ -16,8 +19,13 @@ h2{
     color: white;
     font-family: "Geneva",sans-serif;
     font-size: 20px;
+    
 }
 #map {
-    height: 70%;
+    height: 60%;
+    width: 60%;
+    margin-left:250px;
     margin-top: 20px;
 }
+
+div#page {width: 960px; margin: 0 auto}
